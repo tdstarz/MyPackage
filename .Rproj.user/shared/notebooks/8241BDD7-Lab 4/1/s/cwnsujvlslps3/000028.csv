@@ -1,0 +1,2 @@
+"0",""
+"0","with(spruce.df, text(Height~BHDiameter, labels=row.names(spruce.df), pos=4, cex=0.5))"

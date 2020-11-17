@@ -1,0 +1,1 @@
+"0","text(18,15,paste(""R Squared="",round(sumlmhb$r.squared,4)))"

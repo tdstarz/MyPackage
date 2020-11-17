@@ -1,0 +1,2 @@
+"0","library(s20x)"
+"0","trendscatter(Height~BHDiameter, data=spruce.df, f=0.5)"

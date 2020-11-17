@@ -1,0 +1,4 @@
+"0","myplt=function(x){"
+"0","  quad.lm$coef[1] + quad.lm$coef[2]*x + quad.lm$coef[3]*x^2"
+"0","}"
+"0","curve(myplt,lwd=2,col=""steelblue"",add=TRUE)"

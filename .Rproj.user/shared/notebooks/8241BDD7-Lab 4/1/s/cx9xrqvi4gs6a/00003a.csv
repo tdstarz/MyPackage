@@ -1,0 +1,7 @@
+"0","library(MyPackage)"
+"0","dird=""D:\\Users\\taylordiannestephenson\\Stats 4753\\MyPackage\\"""
+"0","myread=function(csv){"
+"0","  fl=paste(dird,csv,sep="""")"
+"0","  read.table(fl,header=TRUE,sep="","")"
+"0","}"
+"0","head(spruce.df)"

@@ -1,0 +1,8 @@
+"0","myf(0,coef = sumlmhb$coefficients[,""Estimate""])"
+"1","(Intercept) "
+"1","
+"
+"1","   4.499237 "
+"1","
+"
+"0","curve(myf(x,sumlmhb$coefficients[,""Estimate""]),add=TRUE,lwd=2,col=""Pink"")"

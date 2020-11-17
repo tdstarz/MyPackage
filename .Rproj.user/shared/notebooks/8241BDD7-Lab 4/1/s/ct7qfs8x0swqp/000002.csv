@@ -1,0 +1,2 @@
+"0","spruce2.df=within(spruce.df,X<-(BHDiameter-18)*(BHDiameter>18))"
+"0","spruce2.df"

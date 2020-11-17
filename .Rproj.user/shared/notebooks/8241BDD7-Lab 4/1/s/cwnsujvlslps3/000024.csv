@@ -1,0 +1,3 @@
+"0",""
+"0","with(spruce.df, segments(BHDiameter, Height,"
+"0","                         BHDiameter, quad.lm$coef[1] + quad.lm$coef[2] * BHDiameter + quad.lm$coef[3] * BHDiameter ^ 2, col=""Purple""))"

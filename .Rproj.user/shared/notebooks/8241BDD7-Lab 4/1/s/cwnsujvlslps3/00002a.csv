@@ -1,0 +1,2 @@
+"0",""
+"0","with(spruce.df, arrows(BHDiameter[18], Height[24], BHDiameter[24], Height[24], col=""red"", lwd=2))"

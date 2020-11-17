@@ -1,0 +1,3 @@
+"0",""
+"0","with(spruce.df, text(BHDiameter[18], Height[24], labels=c(""Highest Cook's Distance (m)""), pos=2, cex=1))"
+"0",""

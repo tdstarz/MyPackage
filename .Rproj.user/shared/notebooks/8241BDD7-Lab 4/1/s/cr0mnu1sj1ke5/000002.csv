@@ -1,0 +1,2 @@
+"0","spruce.df=read.csv(""SPRUCE (1).csv"", header=TRUE, sep="","") #reads data into R"
+"0","tail(spruce.df) #copy and pastes last six lines of the data"

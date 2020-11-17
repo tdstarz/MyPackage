@@ -1,0 +1,51 @@
+---
+title: "My Vignette"
+author: "Taylor Stephenson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(MyPackage)
+```
+
+# Package Functions
+
+## Bins
+
+This makes a histogram of the normal distribution from a sample size n.
+
+## Bootstrap
+
+This makes a histogram of a given sample of the bootstrap function of param x.
+
+## CI
+
+This finds the default confidence for a 2 sample population if x is a random, single sample.
+
+## CLT
+
+This makes a histogram of a uniform sample distribution with x as the sample size.
+
+## Curve
+
+This finds the area under the curve and creates a distribution and an integral graph.
+
+## Fire
+
+This reads fire data so that we can see it by accessing the package
+
+## MaxLikelihood
+
+This makes a plot of the maximum likelihood of a data set with param x.

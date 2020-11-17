@@ -1,0 +1,2 @@
+"0","quad.fit=fitted(quad.lm)"
+"0","plot(quad.lm, which=1)"
