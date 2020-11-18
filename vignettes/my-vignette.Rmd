@@ -32,7 +32,7 @@ This makes a histogram of a given sample of the bootstrap function of param x.
 
 ## CI
 
-This finds the default confidence for a 2 sample population if x is a random, single sample.
+This finds the default confidence interval for a 2 sample population if x is a random, single sample.
 
 ## CLT
 

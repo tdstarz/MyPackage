@@ -3,22 +3,22 @@
     "path": "~/Stats 4753/MyPackage/vignettes/my-vignette.Rmd",
     "project_path": "vignettes/my-vignette.Rmd",
     "type": "r_markdown",
-    "hash": "3006890865",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1605623533703.0,
     "source_on_save": false,
     "relative_order": 2,
     "properties": {
-        "cursorPosition": "51,0",
-        "scrollLine": "24"
+        "cursorPosition": "50,0",
+        "scrollLine": "20"
     },
     "folds": "",
-    "lastKnownWriteTime": 1605624522,
+    "lastKnownWriteTime": 1605626983,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1605624522956,
+    "last_content_update": 1605626983773,
     "read_only": false,
     "read_only_alternatives": []
 }

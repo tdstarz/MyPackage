@@ -1,0 +1,186 @@
+---
+title: "Lab 11"
+author: "Taylor Stephenson"
+date: "2020-11-11"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Tasks
+
+## Task 1
+
+```{r}
+getwd()
+```
+
+
+## Task 2
+```{r}
+d=c(5.0581, 4.9707, 5.0893, 4.9334, 4.9777, 5.0285, 4.8555, 4.9565, 
+4.9769, 4.9722, 4.999, 4.9925, 4.9686, 5.0662, 4.9239, 4.9781, 
+5.0485, 5.0014, 4.9957, 5.0195, 5.0118, 4.9928, 5.0361, 5.0185, 
+4.9879)
+
+t=qt(0.975,24)
+ci=c()
+ci[1]=mean(d)-t*sd(d)/sqrt(25)
+ci[2]=mean(d)+t*sd(d)/sqrt(25)
+ci
+t=qt(0.95,24)
+ci=c()
+ci[1]=mean(d)-t*sd(d)/sqrt(25)
+ci[2]=mean(d)+t*sd(d)/sqrt(25)
+ci
+t=qt(0.9,24)
+ci=c()
+ci[1]=mean(d)-t*sd(d)/sqrt(25)
+ci[2]=mean(d)+t*sd(d)/sqrt(25)
+ci
+t=qt(0.75,24)
+ci=c()
+ci[1]=mean(d)-t*sd(d)/sqrt(25)
+ci[2]=mean(d)+t*sd(d)/sqrt(25)
+ci
+```
+
+```{r}
+obj=t.test(d,conf.level=0.80)
+obj$conf.int
+```
+
+```{r}
+xsq1=qchisq(0.975,24)
+xsq2=qchisq(0.025,24)
+ci[1]=24*var(d)/xsq1
+ci[2]=24*var(d)/xsq2
+ci
+xsq1=qchisq(0.95,24)
+xsq2=qchisq(0.05,24)
+ci[1]=24*var(d)/xsq1
+ci[2]=24*var(d)/xsq2
+ci
+xsq1=qchisq(0.90,24)
+xsq2=qchisq(.10,24)
+ci[1]=24*var(d)/xsq1
+ci[2]=24*var(d)/xsq2
+ci
+xsq1=qchisq(.75,24)
+xsq2=qchisq(.25,24)
+ci[1]=24*var(d)/xsq1
+ci[2]=24*var(d)/xsq2
+ci
+```
+
+
+## Task 3
+```{r}
+blue=c(21.65, 17.48, 20.1, 21.57, 14.82, 19.17, 21.08, 18.23, 22.93, 
+15.66, 20.89, 21.66, 18.5, 20.59, 18.63, 18.91, 19.53, 17.7, 
+16.5, 19.03)
+
+snapper=c(31.65, 27.48, 30.1, 31.57, 24.82, 29.17, 31.08, 28.23, 32.93, 
+25.66, 30.89, 31.66, 28.5, 30.59, 28.63)
+
+n1=length(snapper)
+n2=length(blue)
+spsq=((n1-1)*var(snapper)+(n2-1)*var(blue))/(n1+n2-2)
+t=qt(0.975,n1+n2-2)
+ci=c()
+ci[1]=mean(snapper)-mean(blue)-t*sqrt(spsq*(1/n1+1/n2)) 
+ci[2]=mean(snapper)-mean(blue)+t*sqrt(spsq*(1/n1+1/n2))
+ci
+```
+
+This interval is the mean difference in length between snapper and blue.
+
+```{r}
+t.test(snapper,blue,conf.level=0.95,var.equal=TRUE)$conf.int
+t.test(snapper,blue,conf.level=0.85,var.equal=TRUE)$conf.int
+t.test(snapper,blue,conf.level=0.75,var.equal=TRUE)$conf.int
+t.test(snapper,blue,conf.level=0.25,var.equal=TRUE)$conf.int
+```
+
+The interval shrinks as the confidence level decreases.
+
+
+## Task 4
+```{r}
+Exam1=c(40.98, 59.36, 46.69, 41.8, 61.63, 65.31, 62.96, 60.21, 56.89, 78.41, 53.44, 75.2, 60.54, 52.43, 41.41, 70.79, 73.55, 55.65, 61.43, 63.84, 58.07, 53.79, 54.45, 67.18, 44.46)
+
+Exam2=c(50.22, 66.19, 58.75, 51.88, 66.61, 70.86, 74.25, 70.23, 69.55, 87.18, 63.62, 81.7, 70.5, 66.02, 51.35, 80.92, 85.65, 65.44, 74.37, 75.28, 67.86, 59.92, 64.42, 73.57, 57.15)
+t=qt(0.975,24)
+exdif=Exam1-Exam2
+t.test(exdif)$conf.int
+```
+
+The exam scores were higher for Exam 2.
+
+```{r}
+t.test(exdif,conf.level = 0.9)$conf.int
+t.test(exdif,conf.level = 0.8)$conf.int
+t.test(exdif,conf.level = 0.7)$conf.int
+t.test(exdif,conf.level = 0.6)$conf.int
+t.test(exdif,conf.level = 0.1)$conf.int
+```
+
+
+## Task 5
+
+```{r}
+bird=read.csv("NZBIRDS.csv")
+B=with(bird, table(Extinct,Flight))
+B
+
+t.test(B, conf.level=0.95)$conf.int
+```
+
+```{r}
+p1=0.5526
+p2=0.0897
+q1=0.4474
+q2=0.9103
+z=1.96
+n1=38
+n2=78
+b1=(p1*q1)*(1/n1)
+b2=(p2*q2)*(1/n2)
+ci=c()
+ci[1]=p1-p2-(z*sqrt((b1)+(b2)))
+ci[2]=p1-p2+(z*sqrt((b1)+(b2)))
+ci
+```
+
+
+## Task 6
+```{r}
+set.seed(35);sam1=rnorm(25,mean=10,sd=5); set.seed(45);sam2=rnorm(34,mean=40,sd=8)
+a=1-.05/2
+ci=c()
+ci[1]=var(sam1)/(var(sam2)*((qf(a, df1=24,df2=33))))
+ci[2]=var(sam1)/var(sam2)*((qf(a, df1=33,df2=24)))
+ci
+var.test(sam1,sam2)
+```
+
+```{r}
+var.test(sam1,sam2,conf.level=.8)$conf.int
+var.test(sam1,sam2,conf.level=.7)$conf.int
+var.test(sam1,sam2,conf.level=.6)$conf.int
+var.test(sam1,sam2,conf.level=.5)$conf.int
+```
+
+
+## Task 7
+```{r}
+library(MyPackage)
+set.seed(23);x = rnorm(30,mean=10,sd=12)
+MyPackage::myci(x)
+```
+

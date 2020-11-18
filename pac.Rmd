@@ -1,0 +1,63 @@
+---
+title: "R Package: MyPackage"
+author: "Taylor Stephenson"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+
+Congratulations for getting this far. To complete the evidence that you have made a working R package please answer the following by using the supplied rmd  and upload the knitted html to CANVAS.
+
+
+# First Function: Bins.R
+
+This makes a histogram of the normal distribution from a sample size n.
+
+```{r first}
+MyPackage::mybin()
+```
+
+
+# Second Function: CI.R
+
+This finds the default confidence interval for a 2 sample population if x is a random, single sample.
+
+```{r second}
+
+MyPackage::myci(x = rnorm(30, mean=10, sd=12))
+
+```
+
+
+# Third Function: CLT.R
+
+This makes a histogram of a uniform sample distribution with x as the sample size.
+
+```{r third}
+MyPackage::myclt()
+```
+
+
+# Fourth Function: MaxLikelihood.R
+
+This makes a plot of the maximum likelihood of a data set with param and x.
+
+```{r fourth}
+logbin=function(x,param) log(dbinom(x,prob=param,size=50))
+MyPackage::mymaxlik(logbin,x=c(1,3,9,7,4,6,5,8),param=seq(0,1,length=1000),main="Maximum Likelihood, n=20")
+```
+
+# The github repository
+
+
+This is the address of my GITHUB repository:
+<https://github.com/tdstarz/MyPackage>

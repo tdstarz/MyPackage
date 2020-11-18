@@ -1,0 +1,140 @@
+---
+title: "Lab 10"
+author: "Taylor Stephenson"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Tasks
+
+## Task 1
+```{r}
+getwd()
+```
+
+## Task 2
+Line A creates a matrix of variable z from the function values of x and y. This will create a new array with these function values.
+
+```{r}
+outer(1:3,4:8,function(x,y) paste(x,y,sep=" "))
+```
+
+Line B spits out the maximum value of the two indices.
+<br>
+<br>
+The formula for the maximum likelihood is as follows:
+$$\begin{eqnarray}
+p(y_1,y_2,y_3,y_4,y_5,y_6,y_7,y_8)&=&\prod^8_{i=1}{20\choose{y_i}}p^{y_i}(1-p)^{20-y_i}
+\end{eqnarray}$$
+
+The R code for the likelihood is as follows:
+```{r}
+mymaxlik=function(lfun,x,param,...){
+  # how many param values are there?
+  np=length(param)
+  # outer -- notice the order, x then param
+  # this produces a matrix -- try outer(1:4,5:10,function(x,y) paste(x,y,sep=" "))   to understand
+  z=outer(x,param,lfun)
+  # z is a matrix where each x,param is replaced with the function evaluated at those values
+  y=apply(z,2,sum)
+  
+  # y is a vector made up of the column sums
+  # Each y is the log lik for a new parameter value
+  plot(param,y,col="Blue",type="l",lwd=2,...)
+  # which gives the index for the value of y == max.
+  # there could be a max between two values of the parameter, therefore 2 indices
+  # the first max will take the larger indice
+  i=max(which(y==max(y)))
+  abline(v=param[i],lwd=2,col="Red")
+  
+  # plots a nice point where the max lik is
+  points(param[i],y[i],pch=19,cex=1.5,col="Black")
+  axis(3,param[i],round(param[i],2))
+  #check slopes. If it is a max the slope shoud change sign from + to
+  # We should get three + and two -vs
+  ifelse(i-3>=1 & i+2<=np, slope<-(y[(i-2):(i+2)]-y[(i-3):(i+1)])/(param[(i-2):(i+2)]-param[(i-3):(i+1)]),slope<-"NA")
+  return(list(i=i,parami=param[i],yi=y[i],slope=slope))
+}
+```
+
+The maximum likelihood estimate:
+```{r}
+source("mylab10.R")
+y=c(3,3,4,3,4,5,5,4)
+logbin=function(x,param) log(dbinom(x,prob=param,size=20))
+mymaxlik(x=c(3,3,4,3,4,5,5,4),param=seq(0,1,length=1000),lfun=logbin,xlab=expression(pi),main="Maximum Likelihood of y",cex.main=1.0)
+```
+
+## Task 3
+```{r}
+logpoiss=function(x,param) log(dpois(x,lambda=param)) 
+mymaxlik(x=c(4,6,7,6,5),param=seq(0,20,length=1000),lfun=logpoiss,xlab=expression(lambda),main="Max Likelihood Estimate of Lambda",cex.main=0.8)
+```
+The algebraic expression for the log likelihood is as follows:
+$$l(\lambda)=ln\left(\frac{e^{-5\lambda}\lambda^{28}}{4!6!7!6!5!}\right)$$
+
+```{r}
+myNRML(x0=1,delta=0.000001,llik=function(x) log(dpois(4,x)*dpois(6,x)*dpois(7,x)*dpois(6,x)*dpois(5,x)),xrange=c(0,30),parameter="lambda" )
+```
+The value of $\hat{\lambda}$ given by myNRML() is 5.6
+
+## Task 4
+```{r}
+logbin2=function(theta){log(dbinom(2,prob=theta,size=6)) + log(dbinom(4,prob=theta,size=10))}
+mymaxlikg(theta=seq(0,1,length=10000), lfun=logbin2)
+```
+
+The graphical maximum likelihood solution for p is 0.375
+
+## Task 5
+The algebraic expression for the log likelihood is as follows:
+$$l(\theta_1,\theta_2)=ln\left(\binom{n}{y_1}\theta_1^y\left(1-\theta_1\right)^{n-y_1}\frac{e^{\theta_2}\theta_2^{y_2}}{y_2!}\right)$$
+
+```{r}
+logbinpois=function(theta1,theta2) log(dbinom(4,size=20,prob=theta1)) + log(dpois(4,lambda=theta2))
+maxlikg2(theta1=seq(0,1,length=1000),theta2=seq(0,10,length=1000),nlevels=20)
+```
+
+The graphical maximum likelihood solution for $\theta_1$ is 0.2002002 <br>
+The graphical maximum likelihood solution for $\theta_2$ is 4.004004
+
+## Task 6
+```{r}
+mymlnorm(x=c(10,12,13,15,12,11,10),mu=seq(10,15,length=1000),sig=seq(0.1,4,length=1000),lwd=2,labcex=1)
+```
+
+## Task 7
+```{r}
+layout(matrix(1:12,nr=3,nc=4,byrow=TRUE))
+z=c()
+a=3
+b=4
+sam=rbeta(20,a,b)
+nsam=length(sam)
+for(i in 1:12){
+  w=mymlbeta(x=sample(sam,nsam,replace=TRUE),alpha=seq(0.1,20,length=100),beta=seq(0.1,20,length=100),lwd=2,labcex=1,col="Orange")
+  points(a,b,col="Red",pch=19)
+  abline(v=a,h=b,col="Purple")
+  z<-rbind(z,c(w$maxalpha,w$maxbeta))
+}
+colnames(z)=c("alpha","beta")
+
+dz=apply(z-c(a,b),1,function(x) sqrt(sum(x^2)))
+layout(1)
+plot(dz, main="Distances Between the Estimates and the Known Population Values")
+```
+
+## Task 8
+```{r}
+library(MyPackage)
+logbin=function(x,param) log(dbinom(x,prob=param,size=50))
+MyPackage::mymaxlik(logbin,x=c(1,3,9,7,4,6,5,8),param=seq(0,1,length=1000),main="Maximum Likelihood, n=20")
+```
+
