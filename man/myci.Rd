@@ -13,7 +13,7 @@ myci(x)
 conf interval
 }
 \description{
-Finds the default confidence for a 2 sample population
+Finds the default confidence interval for a 2 sample population
 }
 \examples{
 x = rnorm(30, mean=10, sd=12)

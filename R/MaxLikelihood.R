@@ -2,11 +2,11 @@
 #'
 #' Makes a plot of the maximum likelihood of a data set
 #'
-#' @param x
+#' @param x sample size
 #'
-#' @return
+#' @return maximum likelihood graph
 #'
-#' @examples
+#' @examples logbin=function(x,param) log(dbinom(x,prob=param,size=50))
 #'
 #'
 #' @export

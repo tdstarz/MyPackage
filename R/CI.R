@@ -1,6 +1,6 @@
 #' Confidence Interval
 #'
-#' Finds the default confidence for a 2 sample population
+#' Finds the default confidence interval for a 2 sample population
 #'
 #' @param x random single sample
 #'

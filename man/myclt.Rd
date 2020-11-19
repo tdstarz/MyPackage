@@ -16,6 +16,7 @@ data point
 Makes a histogram of the data
 }
 \examples{
+(n=10, iter=100)
 
 
 

@@ -6,7 +6,7 @@
 #'
 #' @return data point
 #'
-#' @examples
+#' @examples (n=10, iter=100)
 #'
 #'
 #'

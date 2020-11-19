@@ -3,23 +3,23 @@
     "path": "~/Stats 4753/MyPackage/pac.Rmd",
     "project_path": "pac.Rmd",
     "type": "r_markdown",
-    "hash": "3654268748",
+    "hash": "3656843598",
     "contents": "",
     "dirty": false,
     "created": 1605626717093.0,
     "source_on_save": false,
     "relative_order": 5,
     "properties": {
-        "cursorPosition": "16,164",
-        "scrollLine": "7",
+        "cursorPosition": "59,0",
+        "scrollLine": "59",
         "last_setup_crc32": "B4BAAB1Ebb338d19"
     },
     "folds": "",
-    "lastKnownWriteTime": 1605745874,
+    "lastKnownWriteTime": 1605749416,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1605745874272,
+    "last_content_update": 1605749416094,
     "read_only": false,
     "read_only_alternatives": []
 }

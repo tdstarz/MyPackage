@@ -7,15 +7,16 @@
 mymaxlik(lfun, x, param, ...)
 }
 \arguments{
-\item{x}{}
+\item{x}{sample size}
 }
 \value{
-
+maximum likelihood graph
 }
 \description{
 Makes a plot of the maximum likelihood of a data set
 }
 \examples{
+logbin=function(x,param) log(dbinom(x,prob=param,size=50))
 
 
 }

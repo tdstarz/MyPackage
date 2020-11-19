@@ -22,6 +22,7 @@ This is my Rmd file of four functions from my package called MyPackage. These fu
 This makes a histogram of the normal distribution from a sample size n.
 
 ```{r first}
+?mybin
 MyPackage::mybin()
 ```
 
@@ -31,7 +32,7 @@ MyPackage::mybin()
 This finds the default confidence interval for a 2 sample population if x is a random, single sample.
 
 ```{r second}
-
+?myci
 MyPackage::myci(x = rnorm(30, mean=10, sd=12))
 
 ```
@@ -42,6 +43,7 @@ MyPackage::myci(x = rnorm(30, mean=10, sd=12))
 This makes a histogram of a uniform sample distribution with x as the sample size.
 
 ```{r third}
+?myclt
 MyPackage::myclt()
 ```
 
@@ -51,6 +53,7 @@ MyPackage::myclt()
 This makes a plot of the maximum likelihood of a data set with param and x.
 
 ```{r fourth}
+?mymaxlik
 logbin=function(x,param) log(dbinom(x,prob=param,size=50))
 MyPackage::mymaxlik(logbin,x=c(1,3,9,7,4,6,5,8),param=seq(0,1,length=1000),main="Maximum Likelihood, n=20")
 ```

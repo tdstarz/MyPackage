@@ -1,6 +1,6 @@
 #' Makes a Normal Through Bins
 #'
-#' Distribution graphs
+#' Creates a distribution graph of a random sample
 #'
 #' @param n Sample size
 #'

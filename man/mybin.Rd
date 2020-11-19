@@ -13,7 +13,7 @@ mybin(iter = 100, n = 10, p = 0.7)
 A histogram
 }
 \description{
-Distribution graphs
+Creates a distribution graph of a random sample
 }
 \examples{
 mynorm(n=1000)
