@@ -14,8 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-
-Congratulations for getting this far. To complete the evidence that you have made a working R package please answer the following by using the supplied rmd  and upload the knitted html to CANVAS.
+This is my Rmd file of four functions from my package called MyPackage. These functions have been used in previous lab assignments to demonstrate my knowledge of R.
 
 
 # First Function: Bins.R
